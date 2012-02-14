@@ -25,7 +25,7 @@ class TestField(EnamlTestCase):
         """
 
         enaml_source = """
-MainView(MainWindow):
+enamldef MainView(MainWindow):
     attr events
     Field:
         name = 'field'
@@ -33,8 +33,8 @@ MainView(MainWindow):
         cursor_position = 1
         placeholder_text = 'hold'
         value = 'abc'
-        text_edited >> events.append('text_edited')
-        return_pressed >> events.append('return_pressed')
+        text_edited :: events.append('text_edited')
+        return_pressed :: events.append('return_pressed')
 """
 
         self.events = []

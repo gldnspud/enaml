@@ -35,15 +35,15 @@ class TestCheckBox(EnamlTestCase):
         self.check_box_label = 'checkbox label'
 
         enaml_source = """
-MainView(MainWindow):
+enamldef MainView(MainWindow):
     attr events
     CheckBox:
         name = 'checkb1'
         text = 'checkbox label'
         checked = True
-        toggled >> events.append('toggled')
-        pressed >> events.append('pressed')
-        released >> events.append('released')
+        toggled :: events.append('toggled')
+        pressed :: events.append('pressed')
+        released :: events.append('released')
 """.format(self.check_box_label)
 
         self.events = []
