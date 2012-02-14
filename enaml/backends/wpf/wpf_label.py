@@ -21,7 +21,7 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         """
         shell = self.shell_obj
         self.widget = _WPyFLabel(shell.text)
-        parent.AddLabel(self.widget, 0, 0)
+        parent.Add(self.widget, 0, 0)
 
     def initialize(self):
         """ Initializes the attributes on the underlying control.
