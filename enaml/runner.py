@@ -9,13 +9,16 @@ import optparse
 import sys
 import types
 
-from enaml import imports, default_toolkit, wx_toolkit, qt_toolkit
+from enaml import imports, default_toolkit, wx_toolkit, qt_toolkit, wpf_toolkit
 from enaml.core.parser import parse
 from enaml.core.enaml_compiler import EnamlCompiler
 
 
 toolkits = {
-    'default': default_toolkit, 'wx': wx_toolkit, 'qt': qt_toolkit,
+    'default': default_toolkit,
+    'wx': wx_toolkit,
+    'qt': qt_toolkit,
+    'wpf': wpf_toolkit,
 }
 
 
@@ -25,9 +28,9 @@ def main():
     parser.add_option('-c', '--component', default='Main',
                       help='The component to view')
     parser.add_option('-t', '--toolkit', default='default',
-                      choices=['default', 'wx', 'qt'],
+                      choices=toolkits.keys(),
                       help='The toolkit backend to use')
-    
+
     options, args = parser.parse_args()
 
     if len(args) == 0:
@@ -41,8 +44,8 @@ def main():
 
     with open(enaml_file) as f:
         enaml_code = f.read()
-    
-    # Parse and compile the Enaml source into a code object    
+
+    # Parse and compile the Enaml source into a code object
     ast = parse(enaml_code, filename=enaml_file)
     code = EnamlCompiler.compile(ast, enaml_file)
 
