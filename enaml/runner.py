@@ -30,7 +30,7 @@ def main():
     parser.add_option('-t', '--toolkit', default='default',
                       choices=toolkits.keys(),
                       help='The toolkit backend to use')
-    
+
     options, args = parser.parse_args()
 
     if len(args) == 0:
@@ -44,8 +44,8 @@ def main():
 
     with open(enaml_file) as f:
         enaml_code = f.read()
-    
-    # Parse and compile the Enaml source into a code object    
+
+    # Parse and compile the Enaml source into a code object
     ast = parse(enaml_code, filename=enaml_file)
     code = EnamlCompiler.compile(ast, enaml_file)
 
