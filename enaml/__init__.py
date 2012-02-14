@@ -118,10 +118,10 @@ def wpf_toolkit():
     """
     from .core.operators import OPERATORS
     from .core.toolkit import Toolkit
-    from .widgets.constructors import CONSTRUCTORS
-    from .widgets.layout.layout_helpers import LAYOUT_HELPERS
-    from .widgets.wpf.constructors import WPF_CONSTRUCTORS
-    from .widgets.wpf.wpf_application import WPFApplication
+    from .components.constructors import CONSTRUCTORS
+    from .layout.layout_helpers import LAYOUT_HELPERS
+    from .backends.wpf.constructors import WPF_CONSTRUCTORS
+    from .backends.wpf.wpf_application import WPFApplication
 
     toolkit = Toolkit(WPF_CONSTRUCTORS)
     toolkit.update(CONSTRUCTORS)
