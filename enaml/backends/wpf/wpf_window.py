@@ -6,7 +6,7 @@
 from .wpf_component import WPFComponent
 from .wpf_sizable import WPFSizable
 
-from ..window import AbstractTkWindow
+from ...components.window import AbstractTkWindow
 
 
 class WPFWindow(WPFComponent, WPFSizable, AbstractTkWindow):

@@ -5,7 +5,7 @@
 from wpyf.button import Button as _WPyFButton
 from .wpf_control import WPFControl
 
-from ..push_button import AbstractTkPushButton
+from ...components.push_button import AbstractTkPushButton
 
 
 class WPFPushButton(WPFControl, AbstractTkPushButton):

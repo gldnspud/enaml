@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------
 from .wpf_layout_component import WPFLayoutComponent
 
-from ..control import AbstractTkControl
+from ...components.control import AbstractTkControl
 
 
 class WPFControl(WPFLayoutComponent, AbstractTkControl):

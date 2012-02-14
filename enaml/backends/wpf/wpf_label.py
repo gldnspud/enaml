@@ -5,7 +5,7 @@
 from wpyf.label import Label as _WPyFLabel
 from .wpf_control import WPFControl
 
-from ..label import AbstractTkLabel
+from ...components.label import AbstractTkLabel
 
 
 class WPFLabel(WPFControl, AbstractTkLabel):

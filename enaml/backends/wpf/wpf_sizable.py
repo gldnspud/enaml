@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------
 import wpyf
 
-from ..sizable import AbstractTkSizable
+from ...components.sizable import AbstractTkSizable
 
 
 class WPFSizable(AbstractTkSizable):

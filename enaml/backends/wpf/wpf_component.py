@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------
 import weakref
 
-from ..component import AbstractTkComponent
+from ...components.component import AbstractTkComponent
 
 
 class WPFComponent(AbstractTkComponent):

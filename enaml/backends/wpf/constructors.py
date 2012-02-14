@@ -34,7 +34,7 @@ def shell_loader(base_path):
         The loader function for the shell class.
 
     """
-    c_module_path = 'enaml.widgets.' + base_path
+    c_module_path = 'enaml.components.' + base_path
     c_name = ''.join(part.capitalize() for part in base_path.split('_'))
     shell_loader = importer(c_module_path, c_name)
     return c_name, shell_loader
@@ -58,7 +58,7 @@ def abstract_loader(c_name, base_path):
         The loader function for the abstract class.
 
     """
-    t_module_path = 'enaml.widgets.wpf.' + 'wpf_' + base_path
+    t_module_path = 'enaml.backends.wpf.' + 'wpf_' + base_path
     t_name = 'WPF' + c_name
     abstract_loader = importer(t_module_path, t_name)
     return abstract_loader

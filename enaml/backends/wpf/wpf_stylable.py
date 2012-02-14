@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------
 import wpyf
 
-from ..stylable import AbstractTkStylable
+from ...components.stylable import AbstractTkStylable
 
 
 class WPFStylable(AbstractTkStylable):

@@ -7,7 +7,7 @@ import weakref
 from wpyf.panel import Panel as _WPyFPanel
 from .wpf_layout_component import WPFLayoutComponent
 
-from ..container import AbstractTkContainer
+from ...components.container import AbstractTkContainer
 
 
 class WPFContainer(WPFLayoutComponent, AbstractTkContainer):

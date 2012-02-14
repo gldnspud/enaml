@@ -7,7 +7,7 @@ from threading import Lock
 
 from .wpf.application import Application
 
-from ..abstract_application import AbstractTkApplication
+from ...components.abstract_application import AbstractTkApplication
 
 
 '''
