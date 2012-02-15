@@ -26,7 +26,7 @@ class WPFField(WPFControl, AbstractTkField):
         print "Done creating"
 
     def initialize(self):
-        """ Initializes the attributes of the Qt widget.
+        """ Initializes the attributes of the widget.
 
         """
         super(WPFField, self).initialize()
