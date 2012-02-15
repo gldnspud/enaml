@@ -20,10 +20,8 @@ class WPFField(WPFControl, AbstractTkField):
         """ Creates the underlying TextBox widget.
 
         """
-        print "WPFField.create"
-        self.widget = wpyf.textbox.TextBox(text="DUMMY TEXT")
+        self.widget = wpyf.textbox.TextBox()
         parent.Add(self.widget, 0, 0)
-        print "Done creating"
 
     def initialize(self):
         """ Initializes the attributes of the widget.
@@ -35,9 +33,9 @@ class WPFField(WPFControl, AbstractTkField):
         #self.set_read_only(shell.read_only)
         #self.set_placeholder_text(shell.placeholder_text)
 
-        #text = shell.field_text
-        #if text is not None:
-        #    self.set_text(text)
+        text = shell.field_text
+        if text is not None:
+            self.set_text(text)
         
         #shell._modified = False
 
@@ -293,7 +291,7 @@ class WPFField(WPFControl, AbstractTkField):
         object.
 
         """
-        self.widget.setText(text)
+        self.widget.SetText(text)
 
     def set_max_length(self, max_length):
         """ Set the max length of the control to max_length. If the max 
