@@ -5,12 +5,13 @@
 import weakref
 
 from wpyf.panel import Panel as _WPyFPanel
-from .wpf_layout_component import WPFLayoutComponent
+
+from .wpf_constraints_widget import WPFConstraintsWidget
 
 from ...components.container import AbstractTkContainer
 
 
-class WPFContainer(WPFLayoutComponent, AbstractTkContainer):
+class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
     """ A WPF implementation of Container.
 
     """
