@@ -4,6 +4,7 @@
 #------------------------------------------------------------------------------
 from .qt import QtGui
 from .qt_base_widget_component import QtBaseWidgetComponent
+from .qt_icon import QtIcon
 
 from ...components.action import AbstractTkAction
 
@@ -27,11 +28,13 @@ class QtAction(QtBaseWidgetComponent, AbstractTkAction):
         """
         super(QtAction, self).initialize()
         shell = self.shell_obj
+        self.set_enabled(shell.enabled)
         self.set_text(shell.text)
         self.set_checkable(shell.checkable)
         self.set_checked(shell.checked)
         self.set_status_tip(shell.status_tip)
         self.set_tool_tip(shell.tool_tip)
+        self.set_icon(shell.icon)
         self.set_description(shell.description)
         self.set_separator(shell.separator)
         
@@ -48,6 +51,14 @@ class QtAction(QtBaseWidgetComponent, AbstractTkAction):
     #--------------------------------------------------------------------------
     # Change Handlers 
     #--------------------------------------------------------------------------
+
+    def shell_enabled_changed(self, enabled):
+        """ The change handler for the 'enabled' attribute of the shell
+        object. Sets the widget enabled according to the given boolean.
+
+        """
+        self.set_enabled(enabled)
+
     def shell_text_changed(self, text):
         """ The change handler for the 'text' attribute on the shell
         object.
@@ -82,6 +93,13 @@ class QtAction(QtBaseWidgetComponent, AbstractTkAction):
 
         """
         self.set_tool_tip(tool_tip)
+
+    def shell_icon_changed(self, icon):
+        """ The change handler for the 'icon' attribute on the 
+        shell object.
+
+        """
+        self.set_icon(icon)
     
     def shell_description_changed(self, description):
         """ The change handler for the 'description' attribute on the 
@@ -123,6 +141,12 @@ class QtAction(QtBaseWidgetComponent, AbstractTkAction):
     #--------------------------------------------------------------------------
     # Widget Update Methods 
     #--------------------------------------------------------------------------
+    def set_enabled(self, enabled):
+        """ Sets the enabled state of the action.
+
+        """
+        self.widget.setEnabled(enabled)
+
     def set_text(self, text):
         """ Sets the text of the action.
 
@@ -152,6 +176,14 @@ class QtAction(QtBaseWidgetComponent, AbstractTkAction):
 
         """
         self.widget.setToolTip(tool_tip)
+    
+    def set_icon(self, icon):
+        """ Sets the tool tip text for the action.
+
+        """
+        if icon is None:
+            icon = QtIcon()
+        self.widget.setIcon(icon.qicon)
     
     def set_description(self, description):
         """ Sets the description text for the action.
