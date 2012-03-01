@@ -1,6 +1,8 @@
 from .wpf_base_widget_component import WPFBaseWidgetComponent
 
 from ...components.widget_component import AbstractTkWidgetComponent
+from ...layout.geometry import Rect, Size, Pos
+
 
 class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
     """ A WPF implementation of WidgetComponent.
@@ -34,7 +36,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         manager to determine how much space to allocate the widget.
 
         """
-        return (0, 0)
+        return Size(0, 0)
 
     def layout_geometry(self):
         """ Returns the (x, y, width, height) to of layout geometry
@@ -44,9 +46,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         is different from its paintable rect.
 
         """
-        return (0, 0, 1, 1)
+        return self.geometry()
 
-    def set_layout_geometry(self, x, y, width, height):
+    def set_layout_geometry(self, rect):
         """ Sets the layout geometry of the internal widget to the
         given x, y, width, and height values. The parameters passed
         are equivalent semantics to layout_geometry().
@@ -60,9 +62,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         decorations.
 
         """
-        return (0, 0, 1, 1)
+        return Rect(0, 0, 1, 1)
 
-    def set_geometry(self, x, y, width, height):
+    def set_geometry(self, rect):
         """ Sets the geometry of the internal widget to the given
         x, y, width, and height values, ignoring any windowing
         decorations.
@@ -76,9 +78,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         to be resized smaller than this value
 
         """
-        return (0, 0)
+        return Size(0, 0)
 
-    def set_min_size(self, min_width, min_height):
+    def set_min_size(self, size):
         """ Set the hard minimum width and height of the widget, ignoring
         any windowing decorations. A widget will not be able to be resized
         smaller than this value.
@@ -92,9 +94,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         to be resized larger than this value
 
         """
-        return (0, 0)
+        return Size(0, 0)
 
-    def set_max_size(self, max_width, max_height):
+    def set_max_size(self, size):
         """ Set the hard maximum width and height of the widget, ignoring
         any windowing decorations. A widget will not be able to be resized
         larger than this value.
@@ -107,9 +109,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         windowing decorations, as a (width, height) tuple of integers.
 
         """
-        return (0, 0)
+        return Size(0, 0)
 
-    def resize(self, width, height):
+    def resize(self, size):
         """ Resizes the internal toolkit widget according the given
         width and height integers, ignoring any windowing decorations.
 
@@ -123,9 +125,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         parent, or to the screen if the widget is toplevel.
 
         """
-        return (0, 0)
+        return Pos(0, 0)
 
-    def move(self, x, y):
+    def move(self, pos):
         """ Moves the internal toolkit widget according to the given
         x and y integers which are relative to the origin of the
         widget's parent and includes any windowing decorations.
