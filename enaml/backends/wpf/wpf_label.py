@@ -20,7 +20,8 @@ class WPFLabel(WPFControl, AbstractTkLabel):
 
         """
         shell = self.shell_obj
-        self.widget = _WPyFLabel(shell.text)
+        self.widget = _WPyFLabel()
+        self.widget.Content = unicode(shell.text)
         parent.Add(self.widget, 0, 0)
 
     def initialize(self):
