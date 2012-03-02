@@ -13,14 +13,14 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
 
         """
         #self.widget.set_updates_enabled(True)
-        pass
+        raise NotImplementedError
 
     def disable_updates(self):
         """ Disable rendering updates for the underlying WPF widget.
 
         """
         #self.widget.set_updates_enabled(False)
-        pass
+        raise NotImplementedError
 
     def set_visible(self, visible):
         """ Show or hide the widget.
@@ -36,7 +36,14 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         manager to determine how much space to allocate the widget.
 
         """
-        return Size(0, 0)
+        print "size_hint: ",self
+        self.widget.Measure((float('inf'), float('inf')))
+        width, height = self.widget.DesiredSize
+        # Round to integral values.
+        width = int(round(width))
+        height = int(round(height))
+        print "  returned hint is: ", width, height
+        return Size(width=width, height=height)
 
     def layout_geometry(self):
         """ Returns the (x, y, width, height) to of layout geometry
@@ -46,7 +53,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         is different from its paintable rect.
 
         """
-        return self.geometry()
+        raise NotImplementedError
 
     def set_layout_geometry(self, rect):
         """ Sets the layout geometry of the internal widget to the
@@ -54,7 +61,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         are equivalent semantics to layout_geometry().
 
         """
-        pass
+        raise NotImplementedError
 
     def geometry(self):
         """ Returns an (x, y, width, height) tuple of geometry info
@@ -62,7 +69,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         decorations.
 
         """
-        return Rect(0, 0, 1, 1)
+        raise NotImplementedError
 
     def set_geometry(self, rect):
         """ Sets the geometry of the internal widget to the given
@@ -70,7 +77,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         decorations.
 
         """
-        pass
+        raise NotImplementedError
 
     def min_size(self):
         """ Returns the hard minimum (width, height) of the widget,
@@ -78,7 +85,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         to be resized smaller than this value
 
         """
-        return Size(0, 0)
+        raise NotImplementedError
 
     def set_min_size(self, size):
         """ Set the hard minimum width and height of the widget, ignoring
@@ -86,7 +93,10 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         smaller than this value.
 
         """
-        pass
+        print "set_min_size: ", self, size
+        size = Size(*size)
+        self.widget.MinWidth = size.width
+        self.widget.MinHeight = size.height
 
     def max_size(self):
         """ Returns the hard maximum (width, height) of the widget,
@@ -94,7 +104,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         to be resized larger than this value
 
         """
-        return Size(0, 0)
+        raise NotImplementedError
 
     def set_max_size(self, size):
         """ Set the hard maximum width and height of the widget, ignoring
@@ -102,21 +112,27 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         larger than this value.
 
         """
-        pass
+        print "set_max_size: ", self, size
+        size = Size(*size)
+        self.widget.MaxWidth = size.width
+        self.widget.MaxHeight = size.height
 
     def size(self):
         """ Returns the size of the internal toolkit widget, ignoring any
         windowing decorations, as a (width, height) tuple of integers.
 
         """
-        return Size(0, 0)
+        raise NotImplementedError
 
     def resize(self, size):
         """ Resizes the internal toolkit widget according the given
         width and height integers, ignoring any windowing decorations.
 
         """
-        pass
+        print "Resize: ",self, size
+        size = Size(*size)
+        self.widget.Width = size.width
+        self.widget.Height = size.height
 
     def pos(self):
         """ Returns the position of the internal toolkit widget as an
@@ -125,7 +141,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         parent, or to the screen if the widget is toplevel.
 
         """
-        return Pos(0, 0)
+        raise NotImplementedError
 
     def move(self, pos):
         """ Moves the internal toolkit widget according to the given
@@ -133,7 +149,7 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         widget's parent and includes any windowing decorations.
 
         """
-        pass
+        raise NotImplementedError
 
     def shell_enabled_changed(self, enabled):
         """ The change handler for the 'enabled' attribute on the shell
