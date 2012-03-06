@@ -78,12 +78,11 @@ class TestSlider(EnamlTestCase):
         enaml_source = """
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        Slider:
-            name = 'slider'
-            moved :: events.append(('moved', event.new))
-            pressed :: events.append('pressed')
-            released :: events.append('released')
+    Slider:
+        name = 'slider'
+        moved :: events.append(('moved', event.new))
+        pressed :: events.append('pressed')
+        released :: events.append('released')
 """
 
         self.events = []

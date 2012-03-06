@@ -32,9 +32,8 @@ class TestProgressBar(EnamlTestCase):
 
         enaml = """
 enamldef MainView(MainWindow):
-    Container:
-        ProgressBar:
-            name = 'test'
+    ProgressBar:
+        name = 'test'
 """
 
         self.view = self.parse_and_create(enaml)
@@ -152,12 +151,11 @@ enamldef MainView(MainWindow):
 
         enaml = """
 enamldef MainView(MainWindow):
-    Container:
-        ProgressBar:
-            name = 'test'
-            value = 5
-            minimum = 10
-            maximum = 90
+    ProgressBar:
+        name = 'test'
+        value = 5
+        minimum = 10
+        maximum = 90
 """
 
         # FIXME: need make a more refined check, this is not the best way

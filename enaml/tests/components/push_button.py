@@ -31,13 +31,12 @@ class TestPushButton(EnamlTestCase):
         enaml_source = """
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        PushButton:
-            name = 'pb1'
-            text = 'foo'
-            clicked :: events.append('clicked')
-            pressed :: events.append('pressed')
-            released :: events.append('released')
+    PushButton:
+        name = 'pb1'
+        text = 'foo'
+        clicked :: events.append('clicked')
+        pressed :: events.append('pressed')
+        released :: events.append('released')
 """
 
         self.events = []

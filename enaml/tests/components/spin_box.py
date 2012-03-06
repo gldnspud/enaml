@@ -46,14 +46,13 @@ class TestSpinBox(EnamlTestCase):
 from enaml.converters import IntConverter
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        SpinBox:
-            name = 'spinbox'
-            low = -10
-            high = 21
-            step = 2
-            value = -4
-            wrap = True
+    SpinBox:
+        name = 'spinbox'
+        low = -10
+        high = 21
+        step = 2
+        value = -4
+        wrap = True
 """
 
         self.events = []

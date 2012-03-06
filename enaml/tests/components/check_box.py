@@ -37,14 +37,13 @@ class TestCheckBox(EnamlTestCase):
         enaml_source = """
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        CheckBox:
-            name = 'checkb1'
-            text = 'checkbox label'
-            checked = True
-            toggled :: events.append('toggled')
-            pressed :: events.append('pressed')
-            released :: events.append('released')
+    CheckBox:
+        name = 'checkb1'
+        text = 'checkbox label'
+        checked = True
+        toggled :: events.append('toggled')
+        pressed :: events.append('pressed')
+        released :: events.append('released')
 """.format(self.check_box_label)
 
         self.events = []
@@ -110,7 +109,7 @@ enamldef MainView(MainWindow):
         self.assertEqual(events, [])
 
     def test_press_release_sequence(self):
-        """ Verify the even firing when the press-release (nornal)
+        """ Verify the even firing when the press-release (nornal) 
         sequence is applied.
 
         """

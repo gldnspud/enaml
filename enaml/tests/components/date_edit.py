@@ -40,10 +40,9 @@ class TestDateEdit(EnamlTestCase):
         enaml_source = """
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        DateEdit:
-            name = 'test'
-            date_changed :: events.append(('date_changed', event.new))
+    DateEdit:
+        name = 'test'
+        date_changed :: events.append(('date_changed', event.new))
 """
         self.events = []
         self.view = self.parse_and_create(enaml_source, events=self.events)
@@ -182,13 +181,12 @@ enamldef MainView(MainWindow):
 import datetime
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        DateEdit:
-            name = 'test'
-            date = datetime.date(2010, 1, 1)
-            min_date = datetime.date(1990, 1, 1)
-            max_date = datetime.date(2000, 1, 1)
-            date_changed :: events.append('date_changed')
+    DateEdit:
+        name = 'test'
+        date = datetime.date(2010, 1, 1)
+        min_date = datetime.date(1990, 1, 1)
+        max_date = datetime.date(2000, 1, 1)
+        date_changed :: events.append('date_changed')
 """
         events = []
         # FIXME: need make a more refined check, this is not the best way
@@ -203,13 +201,12 @@ enamldef MainView(MainWindow):
 import datetime
 enamldef MainView(MainWindow):
     attr events
-    Container:
-        DateEdit:
-            name = 'test'
-            min_date = datetime.date(1990, 1, 1)
-            max_date = datetime.date(2000, 1, 1)
-            date = datetime.date(1980, 1, 1)
-            date_changed :: events.append('date_changed')
+    DateEdit:
+        name = 'test'
+        min_date = datetime.date(1990, 1, 1)
+        max_date = datetime.date(2000, 1, 1)
+        date = datetime.date(1980, 1, 1)
+        date_changed :: events.append('date_changed')
 """
         events = []
         # FIXME: need make a more refined check, this is not the best way
