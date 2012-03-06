@@ -50,5 +50,4 @@ class WPFBaseWidgetComponent(AbstractTkBaseWidgetComponent):
         """ Destroys the underlying WPF widget.
 
         """
-        widget = self.widget
         self.widget = None
