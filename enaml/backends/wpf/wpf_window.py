@@ -80,5 +80,5 @@ class WPFWindow(WPFWidgetComponent, AbstractTkWindow):
         """ Sets the title of the underlying widget.
 
         """
-        pass
+        self.widget.Title = unicode(title)
 
