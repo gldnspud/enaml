@@ -60,6 +60,13 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         # change and the layout system needs to be informed.
         self.shell_obj.size_hint_updated()
 
+    def shell_icon_changed(self, icon):
+        """ The change handler for the 'icon' attribute.
+
+        """
+        pass
+
+
     def on_clicked(self):
         """ The event handler for the button's clicked event.
 
