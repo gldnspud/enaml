@@ -58,7 +58,7 @@ class WPFMainWindow(WPFWindow, AbstractTkMainWindow):
         from the shell object.
 
         """
-        menu_bar = self.shell_obj.menu_bar
+        pass
 
     def update_central_widget(self):
         """ Updates the central widget in the main window with the
@@ -71,7 +71,7 @@ class WPFMainWindow(WPFWindow, AbstractTkMainWindow):
         # during initialization. However, we must have a central widget
         # for the MainWindow, and in that case we just fill it with a
         # dummy widget.
-        central_widget = self.shell_obj.central_widget
+        pass
 
     def set_visible(self, visible):
         """ Overridden from the parent class to raise the window to
