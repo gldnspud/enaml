@@ -25,7 +25,7 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         """
         shell = self.shell_obj
         self.widget = _WPyFButton()
-        parent.Add(self.widget, 0, 0)
+        self.add_to_parent(parent)
 
     def initialize(self):
         """ Intializes the widget with the attributes of this instance.

@@ -2,9 +2,7 @@
 #  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
-import weakref
-
-from wpyf.panel import Panel as _WPyFPanel
+from wpyf.panel import Panel
 
 from .wpf_constraints_widget import WPFConstraintsWidget
 
@@ -19,8 +17,8 @@ class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
         """ Creates the underlying WPF widget.
 
         """
-        self.widget = _WPyFPanel()
-        parent.SetContent(self.widget)
+        self.widget = Panel()
+        self.add_to_parent(parent)
 
     def initialize(self):
         """ Initializes the widget.
@@ -33,3 +31,7 @@ class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
 
         """
         super(WPFContainer, self).bind()
+        self.widget.SizeChanged += self.on_resize
+
+    def on_resize(self):
+        self.shell_obj.refresh()

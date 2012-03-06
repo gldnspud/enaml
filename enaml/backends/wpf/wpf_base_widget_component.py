@@ -4,6 +4,8 @@
 #------------------------------------------------------------------------------
 import weakref
 
+from wpyf.window import Window
+
 from ...components.base_widget_component import AbstractTkBaseWidgetComponent
 
 
@@ -51,3 +53,15 @@ class WPFBaseWidgetComponent(AbstractTkBaseWidgetComponent):
 
         """
         self.widget = None
+
+    def add_to_parent(self, parent):
+        """ Add the widget to the provided parent.
+
+        The method is used to hide the different ways of parenting in WPF.
+        """
+        child = self.widget
+        if isinstance(parent, Window):
+            parent.Content = child
+        else:
+            parent.Add(child)
+
