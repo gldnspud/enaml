@@ -24,7 +24,7 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
 
         """
         shell = self.shell_obj
-        self.widget = _WPyFButton(shell.text)
+        self.widget = _WPyFButton()
         parent.Add(self.widget, 0, 0)
 
     def initialize(self):
@@ -98,9 +98,8 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         """ Sets the label on the button control.
 
         """
-        print 'setting label'
-        self.widget.SetText(label)
-        print 'label set'
+        shell = self.shell_obj
+        self.widget.Content = unicode(shell.text)
 
 
 def on_clicked():
