@@ -2,7 +2,7 @@
 #  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
-from .wpf.window import Window
+from wpyf.window import Window
 
 from .wpf_window import WPFWindow
 
@@ -61,13 +61,13 @@ class WPFMainWindow(WPFWindow, AbstractTkMainWindow):
         menu_bar = self.shell_obj.menu_bar
 
     def update_central_widget(self):
-        """ Updates the central widget in the main window with the 
+        """ Updates the central widget in the main window with the
         value from the shell object.
 
         """
         # It's possible for the central widget component to be None.
         # This must be allowed since the central widget may be generated
-        # by an Include component, in which case it will not exist 
+        # by an Include component, in which case it will not exist
         # during initialization. However, we must have a central widget
         # for the MainWindow, and in that case we just fill it with a
         # dummy widget.
