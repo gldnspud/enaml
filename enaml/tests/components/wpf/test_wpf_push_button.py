@@ -13,16 +13,16 @@ class TestWPFPushButton(WPFTestAssistant, push_button.TestPushButton):
         """ Press the button programmatically.
 
         """
-        self.Fail()
+        self.fail()
 
     def button_released(self):
         """ Release the button programmatically.
 
         """
-        self.Fail()
+        self.fail()
 
     def button_clicked(self):
         """ Click the button programmatically.
 
         """
-        self.Fail()
+        self.fail()
