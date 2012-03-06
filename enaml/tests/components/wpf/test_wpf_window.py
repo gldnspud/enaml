@@ -12,5 +12,5 @@ class TestWPFWindow(WPFTestAssistant, window.TestWindow):
         """ Get a window's title.
 
         """
-        return widget.GetTitle()
+        return widget.Title
 
