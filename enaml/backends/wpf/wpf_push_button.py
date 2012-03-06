@@ -40,13 +40,7 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         """
         super(WPFPushButton, self).bind()
         widget = self.widget
-        #bound_method = self.on_clicked
-        #self._bound_methods['on_clicked'] = bound_method
-        widget.BindOnClick(self.on_clicked)
-	# XXX: Hook up the WPF events here
-        #widget.clicked.connect(self.on_clicked)
-        #widget.pressed.connect(self.on_pressed)
-        #widget.released.connect(self.on_released)
+        widget.Click += self.on_clicked
 
     #--------------------------------------------------------------------------
     # Implementation
