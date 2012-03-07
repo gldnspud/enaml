@@ -26,8 +26,10 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
         """ Show or hide the widget.
 
         """
-        #self.widget.set_visible(visible)
-        pass
+        if visible:
+            self.widget.Visibility  = visibility.Visible
+        else:
+            self.widget.Visibility  = visibility.Collapsed
 
     def size_hint(self):
         """ Returns a (width, height) tuple of integers which represent
