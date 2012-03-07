@@ -62,6 +62,8 @@ class WPFBaseWidgetComponent(AbstractTkBaseWidgetComponent):
         child = self.widget
         if isinstance(parent, Window):
             parent.Content = child
+            print "Adding {} to {} (single item)".format(child, parent)
         else:
             parent.Add(child)
+            print "Adding {} to {} (mulitple items)".format(child, parent)
 
