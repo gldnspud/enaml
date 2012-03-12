@@ -9,7 +9,7 @@ from ...components.window import AbstractTkWindow
 
 
 class WPFWindow(WPFWidgetComponent, AbstractTkWindow):
-    """ A WPF implementation of a Window. It serves as a base class for 
+    """ A WPF implementation of a Window. It serves as a base class for
     WPFMainWindow and WPFDialog. It is not meant to be used directly.
 
     """
@@ -39,13 +39,13 @@ class WPFWindow(WPFWidgetComponent, AbstractTkWindow):
 
         """
         pass
-            
+
     def minimize(self):
         """ Minimizes the window to the task bar.
 
         """
         pass
-            
+
     def normalize(self):
         """ Restores the window after it has been minimized or maximized.
 
@@ -58,19 +58,19 @@ class WPFWindow(WPFWidgetComponent, AbstractTkWindow):
 
         """
         self.set_title(title)
-    
+
     def shell_central_widget_changed(self, central_widget):
-        """ The change handler for the 'central_widget' attribute on 
+        """ The change handler for the 'central_widget' attribute on
         the shell object.
 
         """
         self.update_central_widget()
-    
+
     #--------------------------------------------------------------------------
-    # Widget Update Methods 
+    # Widget Update Methods
     #--------------------------------------------------------------------------
     def update_central_widget(self):
-        """ Updates the central widget from the value on the shell 
+        """ Updates the central widget from the value on the shell
         object. This method must be implemented by subclasses.
 
         """
@@ -80,5 +80,5 @@ class WPFWindow(WPFWidgetComponent, AbstractTkWindow):
         """ Sets the title of the underlying widget.
 
         """
-        pass
+        self.widget.Title = unicode(title)
 

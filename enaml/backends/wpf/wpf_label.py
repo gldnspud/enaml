@@ -2,6 +2,8 @@
 #  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
+import warnings
+
 from wpyf.label import Label as _WPyFLabel
 from .wpf_control import WPFControl
 
@@ -19,10 +21,8 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         """ Creates the underlying WPF Label control.
 
         """
-        shell = self.shell_obj
         self.widget = _WPyFLabel()
-        self.widget.Content = unicode(shell.text)
-        parent.Add(self.widget, 0, 0)
+        self.add_to_parent(parent)
 
     def initialize(self):
         """ Initializes the attributes on the underlying control.
@@ -32,7 +32,7 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         shell = self.shell_obj
         self.set_label(shell.text)
         self.set_word_wrap(shell.word_wrap)
-        
+
     #--------------------------------------------------------------------------
     # Implementation
     #--------------------------------------------------------------------------
@@ -52,13 +52,12 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         """ Sets the label on the underlying control.
 
         """
-        #self.widget.set_text(label)
-        pass
+        shell = self.shell_obj
+        self.widget.Content = unicode(shell.text)
 
     def set_word_wrap(self, wrap):
         """ Sets the word wrapping on the underlying widget.
 
         """
-        #self.widget.set_text_wrap(wrap)
-        pass
+        warnings.warn("Option is not yet supported in the wpf backend")
 

@@ -24,8 +24,8 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
 
         """
         shell = self.shell_obj
-        self.widget = _WPyFButton(shell.text)
-        parent.Add(self.widget, 0, 0)
+        self.widget = _WPyFButton()
+        self.add_to_parent(parent)
 
     def initialize(self):
         """ Intializes the widget with the attributes of this instance.
@@ -40,13 +40,7 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         """
         super(WPFPushButton, self).bind()
         widget = self.widget
-        #bound_method = self.on_clicked
-        #self._bound_methods['on_clicked'] = bound_method
-        widget.BindOnClick(self.on_clicked)
-	# XXX: Hook up the WPF events here
-        #widget.clicked.connect(self.on_clicked)
-        #widget.pressed.connect(self.on_pressed)
-        #widget.released.connect(self.on_released)
+        widget.Click += self.on_clicked
 
     #--------------------------------------------------------------------------
     # Implementation
@@ -59,6 +53,13 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         # If the text of the button changes, the size hint has likely
         # change and the layout system needs to be informed.
         self.shell_obj.size_hint_updated()
+
+    def shell_icon_changed(self, icon):
+        """ The change handler for the 'icon' attribute.
+
+        """
+        pass
+
 
     def on_clicked(self):
         """ The event handler for the button's clicked event.
@@ -91,9 +92,8 @@ class WPFPushButton(WPFControl, AbstractTkPushButton):
         """ Sets the label on the button control.
 
         """
-        print 'setting label'
-        self.widget.SetText(label)
-        print 'label set'
+        shell = self.shell_obj
+        self.widget.Content = unicode(shell.text)
 
 
 def on_clicked():

@@ -1,16 +1,15 @@
 #------------------------------------------------------------------------------
-#  Copyright (c) 2011, Enthought, Inc.
+#  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
 from .wpf_test_assistant import WPFTestAssistant
-from .. import window
+from .. import label
 
-class TestWPFWindow(WPFTestAssistant, window.TestWindow):
-    """ QtWindow tests. """
+class TestLabel(WPFTestAssistant, label.TestLabel):
+    """ WPFLabel tests. """
 
-    def get_title(self, widget):
-        """ Get a window's title.
+    def get_text(self, widget):
+        """ Get a label's text.
 
         """
-        return widget.Title
-
+        return widget.Content
