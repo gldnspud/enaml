@@ -1,7 +1,7 @@
 import math
 
 from wpyf import visibility
-from wpyf.panel import Panel
+from wpyf.canvas import Canvas as Panel
 
 from .wpf_base_widget_component import WPFBaseWidgetComponent
 

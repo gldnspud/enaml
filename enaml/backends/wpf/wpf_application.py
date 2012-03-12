@@ -2,7 +2,7 @@
 #  Copyright (c) 2011, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
-from wpyf.simple_application import SimpleApplication
+from wpyf.application import Application
 from ...components.abstract_application import AbstractTkApplication
 
 class WPFApplication(AbstractTkApplication):
@@ -17,7 +17,7 @@ class WPFApplication(AbstractTkApplication):
         """
         app = getattr(self, '_wpf_app', None)
         if app is None:
-           self._wpf_app = SimpleApplication()
+           self._wpf_app = Application()
 
     def start_event_loop(self):
         """ Starts the underlying application object's event loop, or

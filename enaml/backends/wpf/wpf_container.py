@@ -3,7 +3,7 @@
 #  All rights reserved.
 #------------------------------------------------------------------------------
 import weakref
-from wpyf.panel import Panel
+from wpyf.canvas import Canvas as Panel
 
 from .wpf_constraints_widget import WPFConstraintsWidget
 
