@@ -1,6 +1,6 @@
 import math
 
-from wpyf import visibility
+from wpyf.visibility import Visibility
 from wpyf.canvas import Canvas as Panel
 
 from .wpf_base_widget_component import WPFBaseWidgetComponent
@@ -41,9 +41,9 @@ class WPFWidgetComponent(WPFBaseWidgetComponent, AbstractTkWidgetComponent):
 
         """
         if visible:
-            self.widget.Visibility  = visibility.Visible
+            self.widget.Visibility = Visibility.Visible
         else:
-            self.widget.Visibility  = visibility.Collapsed
+            self.widget.Visibility = Visibility.Collapsed
 
     def size_hint(self):
         """ Returns a (width, height) tuple of integers which represent
