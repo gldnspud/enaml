@@ -33,7 +33,4 @@ class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
         self.widget.SizeChanged += self.on_resize
 
     def on_resize(self):
-        print "Size of {} has changed".format(self.widget)
         self.shell_obj.refresh()
-
-
