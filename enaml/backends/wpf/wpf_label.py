@@ -52,12 +52,10 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         """ Sets the label on the underlying control.
 
         """
-        shell = self.shell_obj
-        self.widget.Content = unicode(shell.text)
+        self.widget.Content = unicode(self.shell_obj.text)
 
     def set_word_wrap(self, wrap):
         """ Sets the word wrapping on the underlying widget.
 
         """
-        warnings.warn("Option is not yet supported in the wpf backend")
-
+        warnings.warn("'wrap' option is not yet supported in the wpf backend")
