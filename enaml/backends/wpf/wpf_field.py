@@ -21,7 +21,7 @@ class WPFField(WPFControl, AbstractTkField):
 
         """
         self.widget = wpyf.textbox.TextBox()
-        parent.Add(self.widget, 0, 0)
+        self.add_to_parent(parent)
 
     def initialize(self):
         """ Initializes the attributes of the widget.
@@ -30,24 +30,16 @@ class WPFField(WPFControl, AbstractTkField):
         super(WPFField, self).initialize()
 
         shell = self.shell_obj
-        #self.set_read_only(shell.read_only)
-        #self.set_placeholder_text(shell.placeholder_text)
 
         text = shell.field_text
         if text is not None:
             self.set_text(text)
-        
-        #shell._modified = False
-
-        #self.set_cursor_position(shell.cursor_position)
-        #self.set_password_mode(shell.password_mode)
-        #self.set_max_length(shell.max_length)
 
     #--------------------------------------------------------------------------
     # Shell Object Change Handlers
     #--------------------------------------------------------------------------
     def shell_max_length_changed(self, max_length):
-        """ The change handler for the 'max_length' attribute on the 
+        """ The change handler for the 'max_length' attribute on the
         shell object.
 
         """
@@ -68,7 +60,7 @@ class WPFField(WPFControl, AbstractTkField):
         self.set_placeholder_text(placeholder_text)
 
     def shell_cursor_position_changed(self, cursor_position):
-        """ The change handler for the 'cursor_position' attribute on 
+        """ The change handler for the 'cursor_position' attribute on
         the shell object.
 
         """
@@ -76,7 +68,7 @@ class WPFField(WPFControl, AbstractTkField):
             self.set_cursor_position(cursor_position)
 
     def shell_field_text_changed(self, text):
-        """ The change handler for the 'field_text' attribute on the shell 
+        """ The change handler for the 'field_text' attribute on the shell
         object.
 
         """
@@ -86,17 +78,17 @@ class WPFField(WPFControl, AbstractTkField):
                 self.shell_obj._modified = False
 
     def shell_password_mode_changed(self, mode):
-        """ The change handler for the 'password_mode' attribute on the 
+        """ The change handler for the 'password_mode' attribute on the
         shell object.
-        
+
         """
         self.set_password_mode(mode)
 
     #--------------------------------------------------------------------------
-    # Manipulation Methods 
+    # Manipulation Methods
     #--------------------------------------------------------------------------
     def set_selection(self, start, end):
-        """ Sets the selection in the widget between the start and 
+        """ Sets the selection in the widget between the start and
         end positions, inclusive.
 
         """
@@ -109,7 +101,7 @@ class WPFField(WPFControl, AbstractTkField):
         empty.
 
         """
-        self.widget.selectAll()
+        pass
 
     def deselect(self):
         """ Deselect any selected text.
@@ -118,13 +110,13 @@ class WPFField(WPFControl, AbstractTkField):
         selection. The cursor is placed at the beginning of selection.
 
         """
-        self.widget.deselect()
+        pass
 
     def clear(self):
         """ Clear the line edit of all text.
 
         """
-        self.widget.clear()
+        pass
 
     def backspace(self):
         """ Simple backspace functionality.
@@ -133,7 +125,7 @@ class WPFField(WPFControl, AbstractTkField):
         of the cursor. Otherwise, it deletes the selected text.
 
         """
-        self.widget.backspace()
+        pass
 
     def delete(self):
         """ Simple delete functionality.
@@ -142,16 +134,16 @@ class WPFField(WPFControl, AbstractTkField):
         of the cursor. Otherwise, it deletes the selected text.
 
         """
-        self.widget.del_()
+        pass
 
     def end(self, mark=False):
         """ Moves the cursor to the end of the line.
 
         Arguments
         ---------
-        mark : bool, optional
+        mark : bool
             If True, select the text from the current position to the end of
-            the line edit. Defaults to False.
+            the line edit. Default is *False*.
 
         """
         widget = self.widget
@@ -231,15 +223,15 @@ class WPFField(WPFControl, AbstractTkField):
         self.widget.redo()
 
     #--------------------------------------------------------------------------
-    # Signal Handlers 
+    # Signal Handlers
     #--------------------------------------------------------------------------
     def on_text_edited(self):
-        """ The event handler for when the user edits the text through 
+        """ The event handler for when the user edits the text through
         the ui.
 
         """
-        # The textEdited signal will be emitted along with the 
-        # textChanged signal if the user edits from the ui. In 
+        # The textEdited signal will be emitted along with the
+        # textChanged signal if the user edits from the ui. In
         # that case, we only want to do one update.
         if not guard.guarded(self, 'updating_text'):
             with guard(self, 'updating_text'):
@@ -250,12 +242,12 @@ class WPFField(WPFControl, AbstractTkField):
                 shell._modified = True
 
     def on_text_changed(self):
-        """ The event handler for when the user edits the text 
+        """ The event handler for when the user edits the text
         programmatically.
 
         """
-        # The textEdited signal will be emitted along with the 
-        # textChanged signal if the user edits from the ui. In 
+        # The textEdited signal will be emitted along with the
+        # textChanged signal if the user edits from the ui. In
         # that case, we only want to do one update.
         if not guard.guarded(self, 'updating_text'):
             with guard(self, 'updating_text'):
@@ -284,46 +276,47 @@ class WPFField(WPFControl, AbstractTkField):
             self.shell_obj.cursor_position = self.widget.cursorPosition()
 
     #--------------------------------------------------------------------------
-    # Update methods 
+    # Update methods
     #--------------------------------------------------------------------------
     def set_text(self, text):
         """ Updates the text control with the new text from the shell
         object.
 
         """
-        self.widget.SetText(text)
+        self.widget.Text = unicode(text)
 
     def set_max_length(self, max_length):
-        """ Set the max length of the control to max_length. If the max 
-        length is <= 0 or > 32767 then the control will be set to hold 
+        """ Set the max length of the control to max_length. If the max
+        length is <= 0 or > 32767 then the control will be set to hold
         32kb of text.
 
         """
         if (max_length <= 0) or (max_length > 32767):
             max_length = 32767
-        self.widget.setMaxLength(max_length)
+        pass
 
     def set_read_only(self, read_only):
         """ Sets read only state of the widget.
 
         """
-        self.widget.setReadOnly(read_only)
+        pass
+
 
     def set_placeholder_text(self, placeholder_text):
         """ Sets the placeholder text in the widget.
 
         """
-        self.widget.setPlaceholderText(placeholder_text)
+        pass
 
     def set_cursor_position(self, cursor_position):
         """ Sets the cursor position of the widget.
 
         """
-        self.widget.setCursorPosition(cursor_position)
+        pass
 
     def set_password_mode(self, password_mode):
         """ Sets the password mode of the wiget.
 
         """
-        self.widget.setEchoMode(_PASSWORD_MODES[password_mode])
-        
+        pass
+
