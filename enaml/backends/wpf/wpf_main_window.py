@@ -2,10 +2,12 @@
 #  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
-from wpyf.window import Window
+from wpyf.api import Window, WindowSizeHelper
+from wpyf.api import Size as WPFSize
 
 from .wpf_window import WPFWindow
 
+from ...layout.geometry import Size
 from ...components.main_window import AbstractTkMainWindow
 
 
@@ -80,3 +82,42 @@ class WPFMainWindow(WPFWindow, AbstractTkMainWindow):
         """
         pass
 
+    #--------------------------------------------------------------------------
+    # Widget Component override methods
+    #--------------------------------------------------------------------------
+
+    def resize(self, size):
+        """ Resize window to accomodate the required client area.
+        """
+        new_size = WindowSizeHelper.GetWindowSizeForClientArea(self.widget,
+                                                               WPFSize(size[0],
+                                                                    size[1]));
+        # XXX Settig the window size like this will cause resize to fire twice.
+        self.widget.Width = new_size.Width
+        self.widget.Height = new_size.Height
+
+    def size(self, size):
+        """ Get window client Area.
+        """
+        area = WindowSizeHelper.GetWindowClientArea(self.widget)
+        return Size(area.Width, area.Height)
+
+    def set_max_size(self, size):
+        """ Set max size of the window to accomodate the required max
+        size client area.
+        """
+        new_size = WindowSizeHelper.GetWindowSizeForClientArea(self.widget,
+                                                               WPFSize(size[0],
+                                                                    size[1]));
+        self.widget.MaxWidth = new_size.Width
+        self.widget.MaxHeight = new_size.Height
+
+    def set_min_size(self, size):
+        """ Set min size of the window to accomodate the required min
+        size client area.
+        """
+        new_size = WindowSizeHelper.GetWindowSizeForClientArea(self.widget,
+                                                               WPFSize(size[0],
+                                                                    size[1]));
+        self.widget.MinWidth = new_size.Width
+        self.widget.MinHeight = new_size.Height
