@@ -2,13 +2,11 @@
 #  Copyright (c) 2012, Enthought, Inc.
 #  All rights reserved.
 #------------------------------------------------------------------------------
-import weakref
-from wpyf.canvas import Canvas as Panel
+from wpyf.canvas import Canvas
 
 from .wpf_constraints_widget import WPFConstraintsWidget
 
 from ...components.container import AbstractTkContainer
-
 
 class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
     """ A WPF implementation of Container.
@@ -19,6 +17,7 @@ class WPFContainer(WPFConstraintsWidget, AbstractTkContainer):
 
         """
         print "Create a container component"
+        self.widget = Canvas()
         self.add_to_parent(parent)
 
     def initialize(self):
