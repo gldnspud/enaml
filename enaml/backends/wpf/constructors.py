@@ -104,7 +104,7 @@ WPF_CONSTRUCTORS = dict((
     #constructor('tree_view'),
     #constructor('date_edit'),
     #constructor('datetime_edit'),
-    #constructor('form'),
+    constructor('form'),
     #constructor('group_box'),
     #constructor('scroll_area'),
     #constructor('progress_bar'),
