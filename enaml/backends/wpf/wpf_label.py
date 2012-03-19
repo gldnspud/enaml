@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------
 import warnings
 
-from wpyf.label import Label as _WPyFLabel
+from wpyf.api import Label
 from .wpf_control import WPFControl
 
 from ...components.label import AbstractTkLabel
@@ -21,7 +21,7 @@ class WPFLabel(WPFControl, AbstractTkLabel):
         """ Creates the underlying WPF Label control.
 
         """
-        self.widget = _WPyFLabel()
+        self.widget = Label()
         self.add_to_parent(parent)
 
     def initialize(self):
