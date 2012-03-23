@@ -63,5 +63,5 @@ class WPFBaseWidgetComponent(AbstractTkBaseWidgetComponent):
         if isinstance(parent, Window):
             parent.Content = child
         else:
-            parent.Add(child)
+            parent.Children.Add(child)
 
