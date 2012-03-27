@@ -13,8 +13,6 @@ class BoxModel(object):
         - top
         - width
         - height
-    
-    Derived Variables:
         - right
         - bottom
         - v_center
@@ -23,13 +21,9 @@ class BoxModel(object):
     """
     def __init__(self, component):
         label = '{0}_{1:x}'.format(type(component).__name__, id(component))
-        for primitive in ('left', 'top', 'width', 'height'):
+        for primitive in ('left', 'top', 'width', 'height', 'right', 'bottom', 'v_center', 'h_center'):
             var = ConstraintVariable('{0}_{1}'.format(primitive, label))
             setattr(self, primitive, var) 
-        self.right = self.left + self.width
-        self.bottom = self.top + self.height
-        self.v_center = self.top + self.height / 2.0
-        self.h_center = self.left + self.width / 2.0        
 
 
 class MarginBoxModel(BoxModel):
@@ -37,8 +31,6 @@ class MarginBoxModel(BoxModel):
 
     Primitive Variables:
         - margin_[left|right|top|bottom]
-    
-    Derived Variables:
         - contents_[left|top|right|bottom|width|height|v_center|h_center]
     
     """
@@ -49,12 +41,9 @@ class MarginBoxModel(BoxModel):
            attr = 'margin_{0}'.format(primitive)
            var = ConstraintVariable('{0}_{1}'.format(attr, label))
            setattr(self, attr, var)
-        self.contents_left = self.left + self.margin_left
-        self.contents_top = self.top + self.margin_top
-        self.contents_right = self.right - self.margin_right
-        self.contents_bottom = self.bottom - self.margin_bottom
-        self.contents_width = self.contents_right - self.contents_left
-        self.contents_height = self.contents_bottom - self.contents_top
-        self.contents_v_center = self.contents_top + self.contents_height / 2.0
-        self.contents_h_center = self.contents_left + self.contents_width / 2.0
+        for primitive in ('left', 'top', 'right', 'bottom', 'width', 'height',
+            'v_center', 'h_center'):
+            attr = 'contents_{0}'.format(primitive)
+            var = ConstraintVariable('{0}_{1}'.format(attr, label))
+            setattr(self, attr, var)
 

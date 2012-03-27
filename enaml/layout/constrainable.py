@@ -121,12 +121,19 @@ class Constrainable(HasStrictTraits):
         layout computations of a component as well as any calculations
         of containers which may parent this component. The default 
         implementation constrains the variables 'left', 'right', 
-        'width', and 'height' to >= 0 required.
+        'width', and 'height' to >= 0 required and also specifies the
+        definitional constraints between the primitives.
 
         """
         cns = [
-            self.left >= 0, self.top >= 0, 
-            self.width >= 0, self.height >= 0,
+            self.left >= 0,
+            self.top >= 0, 
+            self.width >= 0,
+            self.height >= 0,
+            self.right == self.left + self.width,
+            self.bottom == self.top + self.height,
+            self.v_center == self.top + self.height / 2.0,
+            self.h_center == self.left + self.width / 2.0,
         ]
         return cns
 
@@ -255,6 +262,29 @@ class MarginConstraints(Constrainable):
     #--------------------------------------------------------------------------
     # Constraint Handling
     #--------------------------------------------------------------------------
+    def hard_constraints(self):
+        """ Returns the list of required symbolic constraints for the 
+        component. These are constraints that apply to both the internal
+        layout computations of a component as well as any calculations
+        of containers which may parent this component. The default 
+        implementation constrains the variables 'left', 'right', 
+        'width', and 'height' to >= 0 required and also specifies the
+        definitional constraints between the primitives.
+
+        """
+        cns = super(MarginConstraints, self).hard_constraints()
+        cns.extend([
+            self.contents_left == self.left + self.margin_left,
+            self.contents_top == self.top + self.margin_top,
+            self.contents_right == self.right - self.margin_right,
+            self.contents_bottom == self.bottom - self.margin_bottom,
+            self.contents_width == self.contents_right - self.contents_left,
+            self.contents_height == self.contents_bottom - self.contents_top,
+            self.contents_v_center == self.contents_top + self.contents_height / 2.0,
+            self.contents_h_center == self.contents_left + self.contents_width / 2.0,
+        ])
+        return cns
+
     def margin_constraints(self):
         """ Returns the list of symbolic constraints for the margins of 
         the component. These constraints apply to the internal layout 
