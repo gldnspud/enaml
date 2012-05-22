@@ -1,17 +1,7 @@
-Enaml Reference
-===============
-
-.. warning:: The current version (i.e. 0.2alpha) of :mod:`enaml` is very
-    early in the development plans thus the API could change and become
-    incompatible between revisions.
+enaml
+=====
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
-    Core <enaml>
-    Parsing <enaml.parsing>
-    Styling <enaml.styling>
-    Widgets <enaml.widgets>
-    Standard Widget Library <std_library_ref>
-    Item Models <enaml.item_models>
-    Utility <enaml.util>
+   enaml
