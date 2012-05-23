@@ -168,12 +168,12 @@ from `traits.HasTraits`, please consider the following:
 
 For example, the Python code
 
-.. include:: ./traits_class.py
+.. include:: traits_class.py
     :literal:
 
 leads to this Sphinx output (using ``..autoclass::``):
 
-.. currentmodule:: ./traits_class
+.. currentmodule:: traits_class
 
 .. autoclass:: Myclass
     :members:
