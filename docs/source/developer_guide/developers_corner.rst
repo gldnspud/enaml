@@ -78,15 +78,6 @@ Sphinx Configuration
 A Sphinx extension ``enamldoc`` lets Sphinx recognize and document |Enaml|
 objects.
 
-.. automodule:: enamldoc.sphinx_ext
-    :members:
-
-.. inheritance-diagram::
-    enamldoc.sphinx_ext.EnamlComponentDocumenter
-    enamldoc.sphinx_ext.EnamlDeclarationDocumenter
-    enamldoc.sphinx_ext.EnamlDomain
-
-
 Including the Sphinx extension ``refactordoc`` allows use of formatted
 docstrings as described below.
 
