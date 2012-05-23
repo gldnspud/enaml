@@ -62,8 +62,6 @@ Subpackages
     enaml.layout
     enaml.localization
     enaml.noncomponents
-    enaml.speedups
-    enaml.stdlib
     enaml.styling
     enaml.tests
     enaml.validation
