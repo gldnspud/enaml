@@ -66,7 +66,7 @@ Sphinx Directives and Roles
     Use the :rst:role:`enaml_comp` role to create a cross-reference to a
     previously described ``enaml_decl`` or ``enaml_defn``
 
-Including the Sphinx extension ``refactor_doc`` allows use of formatted
+Including the Sphinx extension ``refactordoc`` allows use of formatted
 docstrings as described below.
 
 Documentation
@@ -270,6 +270,6 @@ Example
 
         """
 
-.. currentmodule:: refactor_doc
+.. currentmodule:: refactordoc
 
 .. automethod:: FunctionDocstring.extract_fields
