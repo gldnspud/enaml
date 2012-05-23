@@ -14,13 +14,14 @@ Enaml API Reference
     Item Models <enaml.item_models>
     Layouts <enaml.layout>
     Localization <enaml.localization>
+    Modules <modules>
     Non-components <enaml.noncomponents>
-..    Parsing <enaml.parsing>
+    Standard Library Reference <std_library_ref>
     Styling <enaml.styling>
     Tests <enaml.tests>
     Validation <enaml.validation>
+..    Parsing <enaml.parsing>
 ..    Widgets <enaml.widgets>
 ..    Utility <enaml.util>
 
 
-    Standard Library Reference <std_library_ref>
