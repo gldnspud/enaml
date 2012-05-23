@@ -270,6 +270,3 @@ Example
 
         """
 
-.. currentmodule:: refactordoc
-
-.. automethod:: FunctionDocstring.extract_fields
