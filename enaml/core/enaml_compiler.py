@@ -104,31 +104,31 @@ class DeclarationCompiler(_NodeVisitor):
 
         Given this sample declaration in Enaml::
           
-        FooWindow(Window):
-            id: foo
-            a = '12'
-            PushButton:
-                id: btn
-                text = 'clickme'
+            FooWindow(Window):
+                id: foo
+                a = '12'
+                PushButton:
+                    id: btn
+                    text = 'clickme'
         
         We generate bytecode that would correspond to a Python function that
         looks similar to this::
         
-        def FooWindow(identifiers, toolkit):
-            f_globals = globals()
-            eval_ = eval
-            foo_cls = eval('Window', toolkit, f_globals)
-            foo = foo_cls.__enaml_call__(identifiers, toolkit)
-            identifiers['foo'] = foo
-            op = eval_('__operator_Equal__', toolkit, f_globals)
-            op(foo, 'a', <ast>, <code>, identifiers, f_globals, toolkit)
-            btn_cls = eval_('PushButton', toolkit, f_globals)
-            btn = btn_cls.__enaml_call__(None, toolkit)
-            identifiers['btn'] = button
-            op = eval_('__operator_Equal__', toolkit, f_globals)
-            op(item, 'text', <ast>, <code>, identifiers, f_globals, toolkit)
-            foo.add_subcomponent(button)
-            return foo
+            def FooWindow(identifiers, toolkit):
+                f_globals = globals()
+                eval_ = eval
+                foo_cls = eval('Window', toolkit, f_globals)
+                foo = foo_cls.__enaml_call__(identifiers, toolkit)
+                identifiers['foo'] = foo
+                op = eval_('__operator_Equal__', toolkit, f_globals)
+                op(foo, 'a', <ast>, <code>, identifiers, f_globals, toolkit)
+                btn_cls = eval_('PushButton', toolkit, f_globals)
+                btn = btn_cls.__enaml_call__(None, toolkit)
+                identifiers['btn'] = button
+                op = eval_('__operator_Equal__', toolkit, f_globals)
+                op(item, 'text', <ast>, <code>, identifiers, f_globals, toolkit)
+                foo.add_subcomponent(button)
+                return foo
         
         """
         compiler = cls(filename)
