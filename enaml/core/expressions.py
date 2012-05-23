@@ -120,8 +120,8 @@ class ExecutionScope(object):
 
         Raises
         ------
-        KeyError
-            If the name is not found, a KeyError is raise.
+        KeyError : KeyError
+            If the name is not found, a KeyError is raised.
 
         """
         # Check the assignments dict first since this is where all
