@@ -19,21 +19,21 @@ class AbstractInverter(object):
     list supplied by an expression into the inverse of that expression
     which applies the new value onto the expression. For example:
 
-    The expression:
+    The expression::
                     getattr(foo, 'bar')
     
-    Becomes:
+    Becomes::
                     setattr(foo, 'bar', value)
     
-    Likewise, the expression:
+    Likewise, the expression::
                     [spam.ham[0] for spam in foo][0].bar
 
-    Would be translated into:
+    Would be translated into::
                     [spam.ham[0] for spam in foo][0].bar = value
 
     The value, among other information, is provided by the expression 
     by inserting the following names into the scope, which can be 
-    retrieved with the LOAD_NAME op-code:
+    retrieved with the LOAD_NAME op-code::
         
         _[expr] : The expression object
         _[obj]  : The component object which triggered the change
