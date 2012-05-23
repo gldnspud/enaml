@@ -259,23 +259,34 @@ class Code(object):
 
     Affecting action
     ----------------
-    code - list of 2-tuples: the code
-    freevars - list of strings: the free vars of the code (those are names
-               of variables created in outer functions and used in the function)
-    args - list of strings: the arguments of the code
-    varargs - boolean: Does args end with a '*args' argument
-    varkwargs - boolean: Does args end with a '**kwargs' argument
-    newlocals - boolean: Should a new local namespace be created.
-                (True in functions, False for module and exec code)
+    code : list of 2-tuples
+        the code
+    freevars : list of strings
+        the free vars of the code (those are names of variables created in
+        outer functions and used in the function)
+    args : list of strings
+        the arguments of the code
+    varargs : boolean
+        Does args end with a '*args' argument
+    varkwargs : boolean
+        Does args end with a '**kwargs' argument
+    newlocals : boolean
+        Should a new local namespace be created. (True in functions, False for
+        module and exec code.)
 
     Not affecting action
     --------------------
-    name - string: the name of the code (co_name)
-    filename - string: the file name of the code (co_filename)
-    firstlineno - int: the first line number (co_firstlineno)
-    docstring - string or None: the docstring (the first item of co_consts,
-                if it's str or unicode)
+    name : string
+        the name of the code (co_name)
+    filename : string
+        the file name of the code (co_filename)
+    firstlineno : int
+        the first line number (co_firstlineno)
+    docstring : string or None
+        the docstring (the first item of co_consts, if it's str or unicode)
 
+    Notes
+    -----
     code is a list of 2-tuples. The first item is an opcode, or SetLineno, or a
     Label instance. The second item is the argument, if applicable, or None.
     code can be a CodeList instance, which will produce nicer output when
